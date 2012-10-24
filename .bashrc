@@ -115,7 +115,9 @@ fi
 if [ -x /usr/bin/xmodmap -a -x /usr/bin/setxkbmap ]; then
     setxkbmap -option caps:backspace
     setxkbmap -option shift:both_capslock
-    xmodmap -e "clear Lock" 
+    xmodmap -e "clear Lock"
+    xmodmap -e 'keysym XF86AudioMedia = Caps_Lock'
+    xmodmap -e 'add Lock = Caps_Lock'
 fi
 
 function parse_git_dirty {
