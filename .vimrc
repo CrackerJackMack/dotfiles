@@ -8,6 +8,9 @@ set shiftwidth=4
 filetype plugin on
 filetype indent on
 
+set wildmenu
+set wildmode=list:longest,full
+
 call pathogen#infect()
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :NERDTreeToggle<CR>
