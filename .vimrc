@@ -1,6 +1,7 @@
-set foldmethod=indent
+"set foldmethod=indent
 set nocompatible
-set bg=light
+set bg=dark
+colorscheme slate
 set expandtab
 set tabstop=4
 set softtabstop=4
