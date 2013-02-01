@@ -24,10 +24,7 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-export AWS_ELASTICACHE_HOME=$HOME/AmazonElastiCacheCli-1.5.000
-export AWS_RDS_HOME=$HOME/RDSCli-1.6.001
-export AWS_CREDENTIAL_FILE=${AWS_ELASTICACHE_HOME}/credential-file-path.template
-export PATH=$PATH:$AWS_ELASTICACHE_HOME/bin:$AWS_RDS_HOME/bin
+export PATH=$PATH:~/.local/bin
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
