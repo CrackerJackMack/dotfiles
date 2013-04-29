@@ -8,6 +8,7 @@ set softtabstop=4
 set shiftwidth=4
 filetype plugin on
 filetype indent on
+syntax on
 
 set wildmenu
 set wildmode=list:longest,full
@@ -23,3 +24,7 @@ set statusline+=%*
 " Try the following if your GUI uses a dark background.
 highlight ExtraWhitespace ctermbg=darkgreen guibg=white guibg=#FFD9D9
 match ExtraWhitespace /\s\+$/
+
+if has('gui_running')
+    set guifont=Source\ Code\ Pro\ Medium\ 10
+endif
