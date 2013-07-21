@@ -121,3 +121,5 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
+[gitreview]
+	username = crackerjackmack

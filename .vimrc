@@ -6,14 +6,11 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-filetype plugin on
-filetype indent on
-syntax on
-
 set wildmenu
 set wildmode=list:longest,full
 
 call pathogen#infect()
+call pathogen#helptags()
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :NERDTreeToggle<CR>
 
@@ -28,3 +25,17 @@ match ExtraWhitespace /\s\+$/
 if has('gui_running')
     set guifont=Source\ Code\ Pro\ Medium\ 10
 endif
+
+if has("autocmd")
+    filetype off
+    filetype plugin indent off
+    set runtimepath+=/usr/share/vim/addons
+    filetype plugin indent on
+endif
+
+if has("syntax")
+    syntax off
+    syntax on
+endif
+
+
