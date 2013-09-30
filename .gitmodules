@@ -10,3 +10,12 @@
 [submodule ".vim/bundle/gitgutter.git"]
 	path = .vim/bundle/gitgutter.git
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule ".vim/bundle/colorschemes"]
+	path = .vim/bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule ".vim/bundle/switcher"]
+	path = .vim/bundle/switcher
+	url = https://github.com/xolox/vim-colorscheme-switcher.git
+[submodule ".vim/bundle/misc"]
+	path = .vim/bundle/misc
+	url = https://github.com/xolox/vim-misc.git
