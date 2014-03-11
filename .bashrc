@@ -157,7 +157,35 @@ function return_code() {
 }
 
 function num_files() {
-    /bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g'
+    /bin/ls -1 | /usr/bin/wc -l | sed 's: ::g'
+}
+
+function gitignore() {
+    if [ "$1" == "" ]; then
+        echo "Usage: gitignore <language name>"
+        echo ""
+        echo "Downloads a handy pre-made gitignore file for a given language."
+        echo "Full list available at https://github.com/github/gitignore."
+        return 1
+    fi
+ 
+    if [ -f ./.gitignore -a "$2" != "a" ]; then
+        echo ".gitignore already exists!" >&2
+        return 1
+    fi
+ 
+    lang=$1
+    base_url="https://raw.github.com/github/gitignore/master"
+    url="$base_url/$lang.gitignore"
+ 
+    curl -fs $url >> .gitignore
+ 
+    if [ $? -gt 0 ]; then
+        echo "Could not fetch $url" >&2
+        return 1
+    fi
+ 
+    echo "Fetched $url"
 }
 
 #export PS1='\[\033[01;31m\]\u@\h\[\033[01;32m\] \W \[\033[00m\]$(parse_git_branch)$ '
