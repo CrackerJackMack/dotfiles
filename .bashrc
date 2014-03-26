@@ -3,18 +3,21 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 #Defining Colors Used
-RED='\e[1;31m'
-REDWARNING='\e[4;31m'
-GREEN='\e[0;32m'
-REALGREEN='\e[32;1m'
-YELLOW='\e[1;33m'
-ORANGE='\e[0;33m'
-BLUE='\e[0;34m'
-REALBLUE='\e[01;37m'
-MAGENTA='\e[0;35m'
-WHITE='\e[0m'
-GREY='\e[1;30m'
+RED='\x1B[1;31m'
+REDWARNING='\x1B[4;31m'
+GREEN='\x1B[0;32m'
+REALGREEN='\x1B[32;1m'
+YELLOW='\x1B[1;33m'
+ORANGE='\x1B[0;33m'
+BLUE='\x1B[0;34m'
+REALBLUE='\x1B[01;37m'
+MAGENTA='\x1B[0;35m'
+WHITE='\x1B[0m'
+GREY='\x1B[1;30m'
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -112,11 +115,12 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo -e "${RED}*${WHITE}"
 }
 
 function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+    echo -ne "[${ORANGE}"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)]/"
 }
 
 function charge_percent() {
@@ -150,7 +154,7 @@ function free_space() {
 
 function return_code() {
     if [ $1 != "0" ]; then
-        echo -e "$REDWARNING${1}\e[0;0m${REALBLUE}"
+        echo -e "${REDWARNING}${1}\x1B[0;0m${REALBLUE}"
     else
         echo -e "${REALGREEN}${1}${REALBLUE}"
     fi
