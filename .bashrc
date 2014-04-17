@@ -29,6 +29,10 @@ fi
 
 export PATH=$PATH:~/.local/bin
 
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/devel
+source /usr/local/bin/virtualenvwrapper.sh
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
