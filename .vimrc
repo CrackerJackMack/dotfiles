@@ -7,6 +7,8 @@ set softtabstop=4
 set shiftwidth=4
 set wildmenu
 set wildmode=list:longest,full
+let mapleader = ','
+let g:jedi#show_call_signatures = "1"
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -29,16 +31,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" Try the following if your GUI uses a dark background.
-highlight ExtraWhitespace ctermbg=darkgreen guibg=white guibg=#FFD9D9
-match ExtraWhitespace /\s\+$/
-
-if exists('+colorcolumn')
-    set colorcolumn=120
-else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>199v.\+', -1)
-endif
-
 if has('gui_running')
     set guifont=Source\ Code\ Pro\ Medium\ 10
 endif
@@ -55,5 +47,6 @@ if has("syntax")
     syntax off
     syntax on
 endif
+
 
 

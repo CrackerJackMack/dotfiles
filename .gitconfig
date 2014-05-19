@@ -1,6 +1,6 @@
 [user]
 	name = Kevin Landreth
-	email = crackerjackmack@gmail.com
+	email = kevin.landreth@firehost.com
 
 [color]
     branch = auto
@@ -126,3 +126,5 @@
 
 [gitreview]
 	username = crackerjackmack
+[core]
+	editor = /usr/bin/vim
