@@ -27,7 +27,7 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-export PATH=$PATH:~/.local/bin
+export PATH=/usr/local/bin:~/.local/bin:$PATH
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/devel
@@ -196,6 +196,14 @@ function gitignore() {
     echo "Fetched $url"
 }
 
+function get_virtualenv() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo $(basename $VIRTUAL_ENV)
+    else
+        echo "no venv"
+    fi
+}
+
 #export PS1='\[\033[01;31m\]\u@\h\[\033[01;32m\] \W \[\033[00m\]$(parse_git_branch)$ '
-export PS1="\[\e[01;37m\]┌─[\[\e[01;37m\u\e[01;37m\]]─[\$(return_code \$?)]─\$(charge_percent)─[\[\e[00;37m\]${HOSTNAME%%.*}\[\e[01;37m\]]:\w\[\e[01;37m\]\n\[\e[01;37m\]└──\[\e[01;37m\](\[\e[32;1m\]\$(num_files) files, \$(free_space)b\[\e[01;37m\])>>\[\e[0m\]\$(parse_git_branch)\[\e[0m\]$ "
+export PS1="\[\e[01;37m\]┌─[\[\e[01;37m\u\e[01;37m\]]─[\$(return_code \$?)]─\$(charge_percent)─[\[\e[00;37m\]${HOSTNAME%%.*}\[\e[01;37m\]]:\w\[\e[01;37m\]\n\[\e[01;37m\]└──\[\e[01;37m\](\[\e[32;1m\]\$(get_virtualenv)\[\e[01;37m\])>>\[\e[0m\]\$(parse_git_branch)\[\e[0m\]$ "
 
