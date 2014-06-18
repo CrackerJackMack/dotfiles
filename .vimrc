@@ -19,9 +19,9 @@ call pathogen#helptags()
 "colorscheme elise
 "colorscheme enzyme
 "colorscheme fu
-"colorscheme gentooish
+colorscheme gentooish
 "colorscheme getafe
-colorscheme ingretu
+"colorscheme ingretu
 "colorscheme inkpot
 "colorscheme ir_black
 "colorscheme leo
