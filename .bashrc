@@ -14,6 +14,8 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+set -o vi
+
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
@@ -70,6 +72,9 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# mac cases... ugh
+bind "set completion-ignore-case on" 
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
