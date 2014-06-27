@@ -19,13 +19,12 @@ call pathogen#helptags()
 "colorscheme elise
 "colorscheme enzyme
 "colorscheme fu
-colorscheme gentooish
 "colorscheme getafe
 "colorscheme ingretu
 "colorscheme inkpot
 "colorscheme ir_black
 "colorscheme leo
-"colorscheme northsky
+colorscheme northsky
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
