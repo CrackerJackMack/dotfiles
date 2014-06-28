@@ -85,6 +85,10 @@ shopt -s checkwinsize
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
+elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
+    export TERM='gnome-256color'
+elif [ -e /usr/share/terminfo/x/xterm+256color ]; then
+    export TERM='xterm-256color'
 elif [ -e /usr/share/terminfo/78/xterm-256color ]; then
     export TERM='xterm-256color'
 else
