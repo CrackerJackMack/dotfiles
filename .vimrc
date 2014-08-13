@@ -23,15 +23,17 @@ call pathogen#helptags()
 "colorscheme ingretu
 "colorscheme inkpot
 "colorscheme ir_black
-"colorscheme leo
-colorscheme northsky
+colorscheme leo
+"colorscheme northsky
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set number
 
 if has('gui_running')
     set guifont=Source\ Code\ Pro\ Medium\ 10
+    set clipboard=unnamed
 endif
 
 if has("autocmd")
