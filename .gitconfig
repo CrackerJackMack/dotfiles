@@ -63,7 +63,9 @@
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-    lc  = "!f() { git ll "$1"^.."$1"; }; f"
+    lp = log --pretty=raw
+    lt = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --date-order
+    lc = "!f() { git ll "$1"^.."$1"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"

@@ -14,8 +14,6 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-set -o vi
-
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
@@ -52,12 +50,12 @@ else
 fi
 
 # Simple colors for functions
-BORDER=$RESET$WHITE
-USERCOLOR=$RESET$ORANGE
-RETOKCOLOR=$RESET$GREEN
-RETNOKCOLOR=$RESET$BOLD$MAGENTA
-HOSTCOLOR=$RESET$BOLD$BLACK
-PWDCOLOR=$RESET$BOLD$GREEN
+BORDER=$WHITE
+USERCOLOR=$ORANGE
+RETOKCOLOR=$GREEN
+RETNOKCOLOR=$BOLD$MAGENTA
+HOSTCOLOR=$BOLD$BLACK
+PWDCOLOR=$BOLD$GREEN
 
 # Add local/bin and .local/bin
 export PATH=/usr/local/bin:~/.local/bin:$PATH
@@ -130,12 +128,12 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo -e "${RED}*${BORDER}"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo -e "${PURPLE}*${BORDER}"
 }
 
 function parse_git_branch {
-    echo -ne "[${ORANGE}"
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)]/"
+    echo -ne "${ORANGE}"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
 function return_code() {
@@ -182,4 +180,14 @@ function get_virtualenv() {
     fi
 }
 
-export PS1="${BORDER}┌─[${USERCOLOR}\u${BORDER}]─[\$(return_code \$?)${BORDER}]──[${HOSTCOLOR}${HOSTNAME%%.*}${BORDER}]:${PWDCOLOR}\w${BORDER}\n${BORDER}└──(${GREEN}\$(get_virtualenv)${BORDER})>>\$(parse_git_branch)${RESET}${BORDER}$ ${RESET}"
+# export PS1="${BORDER}┌─[${USERCOLOR}\u${BORDER}]─[\$(return_code \$?)${BORDER}]──[${HOSTCOLOR}${HOSTNAME%%.*}${BORDER}]:${PWDCOLOR}\w${BORDER}\n${BORDER}└──(${GREEN}\$(get_virtualenv)${BORDER})>>\$(parse_git_branch)${RESET}${BORDER}$ ${RESET}"
+# export PS1="${BORDER}[${USERCOLOR}\u${BORDER}]\$(return_code \$?)${BORDER}[${HOSTCOLOR}${HOSTNAME%%.*}${BORDER}]:${PWDCOLOR}\w${GREEN}\$(get_virtualenv)${BORDER})>>\$(parse_git_branch)${BORDER}$ "
+PS1_USER="${USERCOLOR}\u"
+PS1_HOST="${HOSTCOLOR}${HOSTNAME%%.*}"
+SEP="${BOLD}${BORDER}﹐"
+BOXIN="${BORDER}﹝"
+BOXOUT="${BORDER}﹞"
+VENV="${ORANGE}\$(get_virtualenv)"
+GIT="\$(parse_git_branch)"
+CWD="${PWDCOLOR}\w"
+export PS1="${BOXIN}${PS1_USER}${SEP}${PS1_HOST}${BOXOUT}\$(return_code \$?)${BOXIN}${VENV}${SEP}${GIT}${BOXOUT}${CWD}${RESET}\n\$ "
