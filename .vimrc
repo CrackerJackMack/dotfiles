@@ -9,6 +9,7 @@ set wildmenu
 set wildmode=list:longest,full
 let mapleader = ','
 let g:jedi#show_call_signatures = "1"
+let g:jedi#use_tabs_not_buffers = "0"
 
 call pathogen#infect()
 call pathogen#helptags()
