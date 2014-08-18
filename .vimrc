@@ -15,6 +15,10 @@ call pathogen#infect()
 call pathogen#helptags()
 "nmap <F8> :TagbarToggle<CR>
 "nmap <F7> :NERDTreeToggle<CR>
+nmap <F10> :!python %<CR>
+nnoremap <F11> :TogglePudbBreakPoint<CR>
+inoremap <F11> :TogglePudbBreakPoint<CR>
+nmap <S-F11> :!pudb %<CR>
 
 "colorscheme cthulhian
 "colorscheme elise
