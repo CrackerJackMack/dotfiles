@@ -20,6 +20,7 @@ nnoremap <F11> :TogglePudbBreakPoint<CR>
 inoremap <F11> :TogglePudbBreakPoint<CR>
 nmap <S-F11> :!pudb %<CR>
 
+
 "colorscheme cthulhian
 "colorscheme elise
 "colorscheme enzyme
@@ -54,5 +55,4 @@ if has("syntax")
     syntax on
 endif
 
-
-
+let g:ycm_autoclose_preview_window_after_insertion = 1
