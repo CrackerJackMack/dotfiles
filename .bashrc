@@ -21,7 +21,19 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export GOPATH=~/.go
 
-#Defining Colors Used
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
+    export TERM='gnome-256color'
+elif [ -e /usr/share/terminfo/x/xterm+256color ]; then
+    export TERM='xterm-256color'
+elif [ -e /usr/share/terminfo/78/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
+# Defining Colors Used
 if tput setaf 1 &> /dev/null; then
     tput sgr0
     if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
@@ -83,18 +95,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && export LESSOPEN="|lesspipe %s"
 
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='xterm-256color'
-elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
-    export TERM='gnome-256color'
-elif [ -e /usr/share/terminfo/x/xterm+256color ]; then
-    export TERM='xterm-256color'
-elif [ -e /usr/share/terminfo/78/xterm-256color ]; then
-    export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
-fi
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
@@ -127,6 +127,29 @@ fi
 # Enable virtualenvwrapper if available
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     . /usr/local/bin/virtualenvwrapper.sh
+fi
+
+SSH_ENV="$HOME/.ssh/env"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
 fi
 
 function parse_git_dirty {
