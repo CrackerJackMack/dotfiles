@@ -13,11 +13,11 @@ nmap <S-F11> :!pudb %<CR>
 "colorscheme elise
 "colorscheme enzyme
 "colorscheme fu
-"colorscheme getafe
+colorscheme getafe
 "colorscheme ingretu
 "colorscheme inkpot
 "colorscheme ir_black
-colorscheme leo
+"colorscheme leo
 "colorscheme northsky
 set nocompatible
 set bg=dark

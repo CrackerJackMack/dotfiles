@@ -132,6 +132,10 @@ fi
 SSH_ENV="$HOME/.ssh/env"
 
 function start_agent {
+    if [ -n "$SSH_AUTH_SOCK" ]; then
+        # agent was forwarded, don't spawn
+        return
+    fi
     echo "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
     echo succeeded

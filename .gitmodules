@@ -12,4 +12,4 @@
 	url = https://github.com/KangOl/vim-pudb.git
 [submodule ".vim/bundle/ycm"]
 	path = .vim/bundle/ycm
-	url = git@github.com:Valloric/YouCompleteMe.git
+	url = https://github.com/Valloric/YouCompleteMe.git
