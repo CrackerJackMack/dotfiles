@@ -1,16 +1,4 @@
 "set foldmethod=indent
-set nocompatible
-set bg=dark
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set wildmenu
-set wildmode=list:longest,full
-let mapleader = ','
-let g:jedi#show_call_signatures = "1"
-let g:jedi#use_tabs_not_buffers = "0"
-
 call pathogen#infect()
 call pathogen#helptags()
 "nmap <F8> :TagbarToggle<CR>
@@ -31,6 +19,15 @@ nmap <S-F11> :!pudb %<CR>
 "colorscheme ir_black
 colorscheme leo
 "colorscheme northsky
+set nocompatible
+set bg=dark
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set wildmenu
+set wildmode=list:longest,full
+
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -56,3 +53,7 @@ if has("syntax")
 endif
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let mapleader = ','
+let g:jedi#show_call_signatures = "1"
+let g:jedi#use_tabs_not_buffers = "0"
+
