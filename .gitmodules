@@ -10,6 +10,3 @@
 [submodule ".vim/bundle/vim-pudb"]
 	path = .vim/bundle/vim-pudb
 	url = https://github.com/KangOl/vim-pudb.git
-[submodule ".vim/bundle/ycm"]
-	path = .vim/bundle/ycm
-	url = https://github.com/Valloric/YouCompleteMe.git
