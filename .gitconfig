@@ -129,4 +129,4 @@
 [gitreview]
 	username = crackerjackmack
 [core]
-	editor = /usr/local/bin/vim
+	editor = /usr/bin/vim
