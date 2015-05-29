@@ -52,3 +52,4 @@ set number
 let mapleader = ','
 
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+autocmd Filetype sls setlocal ts=2 sts=2 sw=2

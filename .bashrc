@@ -66,11 +66,11 @@ else
 fi
 
 # Simple colors for functions
-BORDER=$WHITE
+BORDER=$BOLD$WHITE
 USERCOLOR=$ORANGE
 RETOKCOLOR=$GREEN
 RETNOKCOLOR=$BOLD$MAGENTA
-HOSTCOLOR=$BOLD$BLACK
+HOSTCOLOR=$BLACK
 PWDCOLOR=$BOLD$GREEN
 
 
@@ -170,11 +170,13 @@ function parse_git_branch {
 }
 
 function return_code() {
+    echo -ne "$BORDER<"
     if [ $1 != "0" ]; then
-        echo -e "${RETNOKCOLOR}${1}"
+        echo -ne "${RETNOKCOLOR}${1}"
     else
-        echo -e "${RETOKCOLOR}${1}"
+        echo -ne "${RETOKCOLOR}${1}"
     fi
+    echo -ne "$BORDER>"
 }
 
 function gitignore() {
@@ -215,12 +217,12 @@ function get_virtualenv() {
 
 # export PS1="${BORDER}┌─[${USERCOLOR}\u${BORDER}]─[\$(return_code \$?)${BORDER}]──[${HOSTCOLOR}${HOSTNAME%%.*}${BORDER}]:${PWDCOLOR}\w${BORDER}\n${BORDER}└──(${GREEN}\$(get_virtualenv)${BORDER})>>\$(parse_git_branch)${RESET}${BORDER}$ ${RESET}"
 # export PS1="${BORDER}[${USERCOLOR}\u${BORDER}]\$(return_code \$?)${BORDER}[${HOSTCOLOR}${HOSTNAME%%.*}${BORDER}]:${PWDCOLOR}\w${GREEN}\$(get_virtualenv)${BORDER})>>\$(parse_git_branch)${BORDER}$ "
-PS1_USER="${USERCOLOR}\u"
-PS1_HOST="${HOSTCOLOR}${HOSTNAME%%.*}"
-SEP="${BOLD}${BORDER}﹐"
-BOXIN="${BORDER}﹝"
-BOXOUT="${BORDER}﹞"
-VENV="${ORANGE}\$(get_virtualenv)"
-GIT="\$(parse_git_branch)"
-CWD="${PWDCOLOR}\w"
+PS1_USER="${USERCOLOR}\u${RESET}"
+PS1_HOST="${HOSTCOLOR}${HOSTNAME%%.*}${RESET}"
+SEP="${BOLD}${BORDER},${RESET}"
+BOXIN="${BORDER}[${RESET}"
+BOXOUT="${BORDER}]${RESET}"
+VENV="${ORANGE}\$(get_virtualenv)${RESET}"
+GIT="\$(parse_git_branch)${RESET}"
+CWD="${PWDCOLOR}\w${RESET}"
 export PS1="${BOXIN}${PS1_USER}${SEP}${PS1_HOST}${BOXOUT}\$(return_code \$?)${BOXIN}${VENV}${SEP}${GIT}${BOXOUT}${CWD}${RESET}\n\$ "
