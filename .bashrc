@@ -33,6 +33,17 @@ else
     export TERM='xterm-color'
 fi
 
+# VIM is the best
+if [ -x /usr/local/bin/vim ]; then 
+    export EDITOR=/usr/local/bin/vim
+elif [ -x /usr/bin/vim ]; then
+    export EDITOR=/usr/bin/vim
+elif [ -x /usr/local/bin/vi ]; then
+    export EDITOR=/usr/local/bin/vi
+elif [ -x /usr/bin/vi ]; then
+    export EDITOR=/usr/bin/vi
+fi
+
 # Defining Colors Used
 if tput setaf 1 &> /dev/null; then
     tput sgr0
@@ -145,8 +156,9 @@ function start_agent {
 }
 
 # Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
+if [ -r /usr/local/bin/agent.sh ]; then
+    . /usr/local/bin/agent.sh
+elif [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
     #ps ${SSH_AGENT_PID} doesn't work under cywgin
     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
