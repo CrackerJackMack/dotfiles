@@ -65,15 +65,15 @@ if tput setaf 1 &> /dev/null; then
     BOLD=$(tput bold)
     RESET=$(tput sgr0)
 else
-    MAGENTA="\x1B[1;31m"
-    ORANGE="\x1B[1;33m"
-    GREEN="\x1B[1;32m"
-    BLUE="\x1B[1;34m"
-    PURPLE="\x1B[1;35m"
-    WHITE="\x1B[1;37m"
+    MAGENTA="\e[1;31m"
+    ORANGE="\e[1;33m"
+    GREEN="\e[1;32m"
+    BLUE="\e[1;34m"
+    PURPLE="\e[1;35m"
+    WHITE="\e[1;37m"
     BOLD=""
-    BLACK="\x1B[0;0m"
-    RESET="\x1B[m"
+    BLACK="\e[0;0m"
+    RESET="\e[0m"
 fi
 
 # Simple colors for functions
