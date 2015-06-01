@@ -34,7 +34,7 @@ else
 fi
 
 # VIM is the best
-if [ -x /usr/local/bin/vim ]; then 
+if [ -x /usr/local/bin/vim ]; then
     export EDITOR=/usr/local/bin/vim
 elif [ -x /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
@@ -100,7 +100,7 @@ shopt -s histappend
 shopt -s promptvars
 
 # mac cases... ugh
-bind "set completion-ignore-case on" 
+bind "set completion-ignore-case on"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -202,23 +202,23 @@ function gitignore() {
         echo "Full list available at https://github.com/github/gitignore."
         return 1
     fi
- 
+
     if [ -f ./.gitignore -a "$2" != "a" ]; then
         echo ".gitignore already exists!" >&2
         return 1
     fi
- 
+
     lang=$1
     base_url="https://raw.githubusercontent.com/github/gitignore/master"
     url="$base_url/$lang.gitignore"
- 
+
     curl -fs $url >> .gitignore
- 
+
     if [ $? -gt 0 ]; then
         echo "Could not fetch $url" >&2
         return 1
     fi
- 
+
     echo "Fetched $url"
 }
 
@@ -240,4 +240,5 @@ BOXOUT="${BORDER}]${RESET}"
 VENV="${ORANGE}\$(get_virtualenv)${RESET}"
 GIT="\$(parse_git_branch)${RESET}"
 CWD="${PWDCOLOR}\w${RESET}"
-export PS1="${BOXIN}${PS1_USER}${SEP}${PS1_HOST}${BOXOUT}\$(return_code \$?)${BOXIN}${VENV}${SEP}${GIT}${BOXOUT}${CWD}${RESET}\n\$ "
+# export PS1="${BOXIN}${PS1_USER}${SEP}${PS1_HOST}${BOXOUT}\$(return_code \$?)${BOXIN}${VENV}${SEP}${GIT}${BOXOUT}${CWD}${RESET}\n\$ "
+export PS1="I SUCK $ "
