@@ -30,7 +30,7 @@ elif [ -e /usr/share/terminfo/x/xterm+256color ]; then
 elif [ -e /usr/share/terminfo/78/xterm-256color ]; then
     export TERM='xterm-256color'
 else
-    export TERM='xterm-color'
+    export TERM='screen-256color'
 fi
 
 # VIM is the best
@@ -95,6 +95,9 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# make sure variables are expanded on prompts
+shopt -s promptvars
 
 # mac cases... ugh
 bind "set completion-ignore-case on" 
