@@ -1,0 +1,2 @@
+
+pip install jedi pylama-pylint flake8 pep8 pep257 pudb pylint pytest mccabe
