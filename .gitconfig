@@ -1,6 +1,7 @@
 [user]
 	name = Kevin Landreth
 	email = crackerjackmack@gmail.com
+	signingkey = CA0EDBE0
 
 [color]
     branch = auto
@@ -42,6 +43,7 @@
 
     cl = clone
 
+    pr = pull --rebase
     ci = commit
     cm = commit -m
     cma = commit -a -m

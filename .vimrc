@@ -24,10 +24,10 @@ if has("syntax")
 endif
 
 
-"colorscheme cthulhian
+colorscheme cthulhian
 "colorscheme elise
 "colorscheme enzyme
-colorscheme fu
+"colorscheme fu
 "colorscheme getafe
 "colorscheme ingretu
 "colorscheme inkpot
@@ -50,6 +50,17 @@ set statusline+=%*
 set number
 
 let mapleader = ','
+let g:syntastic_python_pylama_args = '-l pep8,pep257,mccabe,pyflakes,pylint'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:vim_isort_map = '<C-i>'
 
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype sls setlocal ts=2 sts=2 sw=2

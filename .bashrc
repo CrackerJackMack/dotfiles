@@ -171,10 +171,6 @@ else
     start_agent;
 fi
 
-if [ -x /usr/bin/virsh ]; then
-    export VAGRANT_DEFAULT_PROVIDER=libvirt
-fi
-
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo -e "${PURPLE}*${BORDER}"
 }
