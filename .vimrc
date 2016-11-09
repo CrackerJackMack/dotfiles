@@ -24,13 +24,13 @@ if has("syntax")
 endif
 
 
-colorscheme cthulhian
+"colorscheme cthulhian
 "colorscheme elise
 "colorscheme enzyme
 "colorscheme fu
 "colorscheme getafe
 "colorscheme ingretu
-"colorscheme inkpot
+colorscheme inkpot
 "colorscheme ir_black
 "colorscheme leo
 "colorscheme northsky
@@ -64,3 +64,4 @@ let g:vim_isort_map = '<C-i>'
 
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype sls setlocal ts=2 sts=2 sw=2
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
